@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  app:
+    image: portainer/portainer:latest
+    command: -H unix:///var/run/docker.sock -p :80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data/portainer:/data
+#    environment:
+    networks:
+      default:
+      swarm_routing:
+        aliases:
+          - manager.example.com
+    deploy:
+#      resources:
+#        reservations:
+#          cpus: '0.05'
+#          memory: 8M
+#        limits:
+#          memory: 8M
+      placement:
+        constraints:
+          - node.role == manager
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: any
+        delay: 5s
+        max_attempts: 10
+
+networks:
+  default:
+    internal: true
+    driver: overlay
+  swarm_routing:
+    external: true
