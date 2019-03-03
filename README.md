@@ -3,6 +3,10 @@
 ```
 curl https://get.docker.com/ | bash
 
+systemctl enable docker --now
+
+docker swarm init
+
 curl https://get.acme.sh | sh
 
 cat <<'EOF' > /etc/profile.d/cloudflare.sh
