@@ -18,8 +18,8 @@ source /etc/profile.d/cloudflare.sh
 
 /root/.acme.sh/acme.sh --issue -d example.com -d '*.example.com' --dns dns_cf
 
-mkdir -p /certs/
-cat /root/.acme.sh/example.com/fullchain.cer > /certs/example.com.pem && cat /root/.acme.sh/example.com/example.com.key >> /certs/example.com.pem
+mkdir -p /data/certs/
+cat /root/.acme.sh/example.com/fullchain.cer > /data/certs/example.com.pem && cat /root/.acme.sh/example.com/example.com.key >> /data/certs/example.com.pem
 
 mkdir -p /data/portainer/
 
