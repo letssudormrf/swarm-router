@@ -47,7 +47,7 @@ services:
       restart_policy:
         condition: any
     volumes:
-      - /certs:/certs
+      - /data/certs:/certs
 
 networks:
   routing:
